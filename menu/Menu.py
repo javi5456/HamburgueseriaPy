@@ -1,7 +1,7 @@
 import os
 from cargasDb.cargaVentas import cargarVenta
 from cargasDb.fichero import inOperario, outOperario
-import menuPrincipal
+from menu.menuPrincipal import menuPrincipal
 from validaciones.validaciones import pedirNum
 def limpiar():
      os.system('cls' if os.name=='nt'else 'clear')
@@ -73,4 +73,4 @@ def menu():
             else:
                 print("Opcion incorrecta")
                 opcion = menuEncargado()
-menu()
+
