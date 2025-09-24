@@ -1,8 +1,5 @@
-import os
+from menu.helper import limpiar
 from Encargados.loginEncargados import login
-def limpiar():
-     os.system('cls' if os.name=='nt'else 'clear')
-
 def menuPrincipal():
     print("Bienvenidos a Hamburguesas IT")
     user = input("Ingrese su usuario de encargado: ")
@@ -11,7 +8,7 @@ def menuPrincipal():
     if encargado:
         return user
     else: 
-         print("Usuario o contraseña incorrecto")
          limpiar()
+         print("Usuario o contraseña incorrecto")
          menuPrincipal()
     return

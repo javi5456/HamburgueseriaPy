@@ -18,4 +18,5 @@ def crearDB():
     cur.execute("CREATE TABLE IF NOT EXISTS ventas(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, fecha TEXT, ComboS INTEGER, ComboD INTEGER, ComboT INTEGER, Flurby INTEGER, Total FLOAT)")
     con.commit()
     con.close()
+    print("Base de datos creada y cargada")
 crearDB()

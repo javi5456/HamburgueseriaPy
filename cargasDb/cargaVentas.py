@@ -24,7 +24,5 @@ def cargarVenta(nombre:str, ComboS:int, ComboD:int, ComboT:int, Flurby:int, Tota
         INSERT INTO ventas (nombre, fecha, ComboS, ComboD, ComboT, Flurby, Total)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     """, (nombre, fecha, ComboS, ComboD, ComboT, Flurby, Total))
-    res = cur.execute("SELECT * FROM ventas")
-    print(res.fetchall())
     con.commit()
     con.close()

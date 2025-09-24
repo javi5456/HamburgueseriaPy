@@ -1,6 +1,5 @@
 from connectDb import connect
 import time
-import sqlite3
 def inOperario(nombre):
     con = connect()
     cur = con.cursor()
@@ -17,29 +16,29 @@ def inOperario(nombre):
         VALUES (?, ?, ?, ?)
     """, (nombre, fecha, "IN",0))
     res = cur.execute("SELECT * FROM fichero")
-    print(res.fetchall())
+    res.fetchall()
     con.commit()
     con.close()
 
-def outOperario(nombre, monto):
+def outOperario(encargado, caja):
     con = connect() 
     cur = con.cursor()
     try:
-        nombre = str(nombre)
-        monto = float(monto)
+        nombre = str(encargado)
+        monto = float(caja)
     except ValueError as e:
         raise TypeError("Uno de los parámetros no tiene el tipo correcto")
     
-    f = open("archivo.txt", "a")
+    f = open("rUsuarios.txt", "a")
     fecha = time.ctime()
     f.write("OUT " + fecha + " Encargad@ " + nombre + " $" + str(monto) + "\n")
+    print("El encargado", nombre, "ha cerrado su caja con un total de $", monto)
     f.write("##################################################\n")
     f.close()
     cur.execute("""
         INSERT INTO fichero (encargado, fecha, evento, caja)
         VALUES (?, ?, ?, ?)
     """, (nombre, fecha, "OUT",monto))
-    res = cur.execute("SELECT * FROM fichero")
-    print(res.fetchall())
+
     con.commit()
     con.close()
